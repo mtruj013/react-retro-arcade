@@ -1,10 +1,19 @@
-import './App.css';
+import './App.scss';
 import Header from './components/header/Header';
+import SelectGameButton from './components/main-content/SelectGameButton';
+
 
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <div className="header-div">
+        <Header />
+      </div>
+      <div className="content">
+        <SelectGameButton>Teris</SelectGameButton>
+        <SelectGameButton>Snake</SelectGameButton>
+        <SelectGameButton>Pong</SelectGameButton>
+      </div>
     </div>
   );
 }

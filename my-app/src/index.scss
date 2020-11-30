@@ -3,6 +3,21 @@
   src: local('RockerRinder'), url(./fonts/RocketRinder-yV5d.ttf) format('truetype');
 }
 
+@font-face{
+  font-family: 'Tetris';
+  src: local('Tetris'), url(./fonts/Tetris.ttf)  format('truetype');
+}
+
+@font-face{
+  font-family: 'Nokiafc22';
+  src: local('Nokiafc22'), url(./fonts/nokiafc22.ttf) format('truetype');
+}
+
+@font-face{
+  font-family: 'BlippoBold';
+  src: local('BlippoBold'), url(./fonts/BlippoBold.ttf) format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,6 +25,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./images/background_arcade.jpg);
+  background-size: cover;
 }
 
 code {
