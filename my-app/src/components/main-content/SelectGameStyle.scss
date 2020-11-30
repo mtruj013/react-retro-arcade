@@ -1,60 +1,85 @@
-.btn:link,
-.btn:visited{
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 15px 40px;
-    transition: all 2s;
-    position: absolute;
+$offwhite: darken(white, 10%);
+$darkblue: rgb(50,50,60);
+
+*, *::after, *::before{
+    box-sizing: border-box
 }
 
-.btn:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.btn-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
 }
 
-.btn:active{
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+button{
+    position: relative;
+    border: none;
+    font-size: 18px;
+    transition: color 0.5s, transform 0.2s, background-color 0.2s;
+    outline: none;
+    border-radius: 3px;
+    margin: 0 10px;
+    padding: 23px 33px;
+    border: 3px solid transparent;
+
+    &:active{
+        transform: translateY(3px);
+    }
+
+    &::after, &::before{
+        border-radius: 3px;
+    }
 }
 
-.btn-color{
-    background-color: #fff;
-    color: #777;
-}
+.btn{
+    background-color: transparent;
+    color: darken($darkblue, 10%);
+    transition: opacity 0.3s, border 0.3s;
 
-.btn::after{
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
+    &:hover{
+        background-color: transparent;
+        box-shadow: none;
+        color: $offwhite;
+    }
 
-.btn-color::after{
-    background-color: #fff;
-}
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 3px solid darken($darkblue, 10%);
+        transition: opacity 0.3s, border 0.3s;
+    }
 
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-
-.btn-animated{
-    animation: moveInBottom 5s ease-out;
-    animation-fill-mode: backwards;
-}
-
-@keyframes moveInBottom{
-    0%{
+    &:hover::before{
         opacity: 0;
-        transform: translateY(30px);
     }
 
-    100% {
+    &::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: 3px solid $offwhite;
+        opacity: 0;
+        z-index: -1;
+        transform: scaleX(1.1) scaleY(1.3);
+        transition: transform 0.3s, opacity 0.3s;
+    }
+
+    &:hover::after{
         opacity: 1;
-        transform: translateY(0px);
+        transform: scaleX(1) scaleY(1);
     }
 }
+
+
+

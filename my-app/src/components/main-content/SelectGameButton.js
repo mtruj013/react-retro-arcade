@@ -3,7 +3,7 @@ import './SelectGameStyle.scss';
 
 const SelectGameButton = (props) => {
     return(
-        <div className="button-container">
+        <div className="btn-box">
             <button className="btn btn-color btn-animated">
                 {props.children}
             </button>
