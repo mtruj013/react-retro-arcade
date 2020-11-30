@@ -2,7 +2,7 @@ $offwhite: darken(white, 10%);
 $darkblue: rgb(50,50,60);
 
 *, *::after, *::before{
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .btn-box{
@@ -16,8 +16,9 @@ $darkblue: rgb(50,50,60);
 
 button{
     position: relative;
+    font-family: 'RocketRinder';
     border: none;
-    font-size: 18px;
+    font-size: 45px;
     transition: color 0.5s, transform 0.2s, background-color 0.2s;
     outline: none;
     border-radius: 3px;
@@ -39,6 +40,8 @@ button{
     color: darken($darkblue, 10%);
     transition: opacity 0.3s, border 0.3s;
 
+
+
     &:hover{
         background-color: transparent;
         box-shadow: none;
@@ -50,7 +53,7 @@ button{
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 95%;
         height: 100%;
         border: 3px solid darken($darkblue, 10%);
         transition: opacity 0.3s, border 0.3s;
@@ -65,7 +68,7 @@ button{
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 90%;
         height: 100%;
         background-color: transparent;
         border: 3px solid $offwhite;
@@ -80,6 +83,4 @@ button{
         transform: scaleX(1) scaleY(1);
     }
 }
-
-
 
