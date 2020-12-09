@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { createStage } from '../gameHelpers';
-import { usePlayer } from './usePlayer';
 
 export const useStage = (player, resetPlayer) => {
     const [stage, setStage] = useState(createStage());
@@ -10,7 +9,7 @@ export const useStage = (player, resetPlayer) => {
             // clear out the stage. using two maps but can be replaced to for loop for performance 
             const newStage = prevStage.map(row =>
                 row.map(cell => (cell[1] === 'clear' ? [0, 'clear'] : cell))
-            )
+            );
 
             // display the tetromino
             player.tetromino.forEach((row, y) => {
@@ -23,11 +22,15 @@ export const useStage = (player, resetPlayer) => {
                     }
                 })
             });
+            // check if collided
+            if(player.collided){
+                resetPlayer();
+            }
 
             return newStage;
         };
         setStage(prev => updateStage(prev));
-    }, [player]);
+    }, [player, resetPlayer]);
 
 
 

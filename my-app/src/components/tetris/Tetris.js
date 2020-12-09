@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Stage from './Stage';
 import Display from './Display';
 import StartButton from './StartButton';
-import { createStage } from './gameHelpers';
+import { createStage, checkCollision } from './gameHelpers';
 import { StyledTetrisWrapper, StyledTetris } from '../tetris/styles/StyledTetris';
 // custom hooks
 import { usePlayer } from './hooks/usePlayer';
@@ -17,23 +17,40 @@ const Tetris = () => {
 
     // make use of custom hooks
     const [player, updatePlayerPosition, resetPlayer] = usePlayer();
-    const [stage, setStage] = useStage(player);
+    const [stage, setStage] = useStage(player, resetPlayer);
 
     console.log('re-render');
 
-    // creates movement for player
+    // allows movement for player
     const movePlayer = dir => {
-        updatePlayerPosition({x: dir, y: 0})
-    }
+        console.log(checkCollision)
+        if(!checkCollision(player, stage, { x : dir, y: 0})){
+            updatePlayerPosition({x: dir, y: 0});
+        }
+    };
 
     const startGame = () => {
+        console.log("test")
         // reset everything
         setStage(createStage());
         resetPlayer();
+        setGameOver(false);
     }
 
     const drop = () => {
-        updatePlayerPosition({ x: 0, y: 1, collided: false})
+        if(!checkCollision(player, stage, { x: 0, y: 1})){
+
+            updatePlayerPosition({ x: 0, y: 1, collided: false})
+        }else{
+            // game over
+            if(player.position.y < 1){
+                console.log(player.position)
+                console.log("GAME OVER!!")
+                setGameOver(true);
+                setDropTime(null);
+            }
+            updatePlayerPosition({ x : 0, y : 0, collided: true})
+        }
     }
 
     const dropPlayer = () => {
@@ -42,6 +59,7 @@ const Tetris = () => {
 
     // callback function for when keys are pressed, used in moveplayer function 
     const move = ({keyCode}) => {
+        console.log(keyCode)
         if (!gameOver) {
             // 37 = left arrow on keyboard
             if (keyCode === 37){
