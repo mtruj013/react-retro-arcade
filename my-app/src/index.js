@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Tetris from './components/tetris/Tetris';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="app-root">
+      <Router>
+        <Switch>
+          <Route exact path='/'><App /></Route>
+          <Route path='/tetris'><Tetris/></Route>
+        </Switch>
+      </Router>
+    </div>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
