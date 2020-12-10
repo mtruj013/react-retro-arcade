@@ -75,7 +75,7 @@ const Header = () => {
                         <feBlend in="SourceGraphic" in2="blur" mode="screen" result="bloomed"/>
                     </filter>
                     <filter id="noise" x="0vw" y="0vh" width="100vw" height="100vh">
-                        <feFlood flood-color="#808080" result="neutral-gray"/>
+                        <feFlood floodColor="#808080" result="neutral-gray"/>
                         <feTurbulence in="neutral-gray" type="fractalNoise" baseFrequency="0.8" numOctaves="10" stitchTiles="stitch" result="noise"/>
                         <feColorMatrix in="noise" type="saturate" values="0" result="desaturatedNoise"></feColorMatrix>
                         <feComponentTransfer in="desaturatedNoise" result="theNoise">
