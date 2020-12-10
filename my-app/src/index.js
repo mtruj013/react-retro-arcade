@@ -8,7 +8,6 @@ import Tetris from './components/tetris/Tetris';
 
 
 ReactDOM.render(
-  <React.StrictMode>
     <div className="app-root">
       <Router>
         <Switch>
@@ -16,9 +15,7 @@ ReactDOM.render(
           <Route path='/tetris'><Tetris/></Route>
         </Switch>
       </Router>
-    </div>
-    
-  </React.StrictMode>,
+    </div>,
   document.getElementById('root')
 );
 

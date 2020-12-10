@@ -16,7 +16,7 @@ const Tetris = () => {
     const [gameOver, setGameOver] = useState(false);
 
     // make use of custom hooks
-    const [player, updatePlayerPosition, resetPlayer] = usePlayer();
+    const [player, updatePlayerPosition, resetPlayer, playerRotate] = usePlayer();
     const [stage, setStage] = useStage(player, resetPlayer);
 
     console.log('re-render');
@@ -71,6 +71,8 @@ const Tetris = () => {
             } else if (keyCode === 40){
                 // move down
                 dropPlayer()
+            } else if (keyCode === 38){
+                playerRotate(stage, 1);
             }
         }
     }
